@@ -352,9 +352,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8805ebd66f405f4d8d73022dfed0eee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  moveSpeed: 3
-  pauseDuration: 1
-  dashDuration: 2
+  moveSpeed: 2
+  dashCounterHolder: 69420000
 --- !u!50 &187240782
 Rigidbody2D:
   serializedVersion: 5
