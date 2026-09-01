@@ -21,6 +21,6 @@ public class PlayerHealth : MonoBehaviour, Damageable
     void Die()
     {
         Debug.Log("Player died!");
-        // TODO: add your death logic here (restart level, play animation, etc.)
+        //add death stuff
     }
 }
