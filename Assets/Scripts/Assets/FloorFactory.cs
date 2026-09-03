@@ -1,4 +1,4 @@
-import UnityEngine;
+using UnityEngine;
 
 public class FloorFactory
 {
@@ -7,7 +7,7 @@ public class FloorFactory
     {
         Floor newFloor = new Floor();
 
-        newFloor.addRoom( new Room() );
+        newFloor.AddRoom( new Room() );
 
         return newFloor;
     }

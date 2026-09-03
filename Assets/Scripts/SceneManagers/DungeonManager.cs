@@ -1,21 +1,21 @@
 using UnityEngine;
 
-public class DungeonManager : MonoBehavoir
+public class DungeonManager : MonoBehaviour
 {
     private GameContext Context;
 
-    private Floor CurrentFloor { get; private set; }
+    public Floor CurrentFloor { get; private set; }
     private int currentDepth;
 
     private void Awake()
     {
         Context = Initializer.Context;
         currentDepth = 1;
-        CurrentFloor = Context.FloorFactory.generateFloor( currentDepth );
+        //CurrentFloor = Context.FloorFactory.GenerateFloor( currentDepth );
     }
 
     public void CreateNewFloor()
     {
-        CurrentFloor = Context.FloorFactory.generateFloor( currentDepth );
+        //CurrentFloor = Context.FloorFactory.GenerateFloor( currentDepth );
     }
 }
