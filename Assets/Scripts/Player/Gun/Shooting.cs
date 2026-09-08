@@ -20,6 +20,7 @@ public class Shooting : MonoBehaviour
         GameObject bulletInstance = Instantiate(bullet, shotPoint.position, shotPoint.rotation);
         Rigidbody2D rb = bulletInstance.GetComponent<Rigidbody2D>();
         rb.AddForce(shotPoint.up * bulletForce, ForceMode2D.Impulse);
+        // Debug.Log("Shoot called");
     }
 
 }

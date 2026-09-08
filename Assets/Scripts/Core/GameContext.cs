@@ -6,13 +6,16 @@ using UnityEngine;
 
 public class GameContext
 {
-    // RoomFactory roomFactory {get;}
-    // FloorFactory floorFactory {get;}
+    public RoomFactory RoomFactory {get;}
+    public FloorFactory FloorFactory {get;}
 
     // Player player {get;};
 
-    public GameContext()
+
+    public GameContext( GameData data )
     {
         //instantiate factories
+        RoomFactory = new RoomFactory( data );
+        FloorFactory = new FloorFactory( data, RoomFactory );
     }
 }

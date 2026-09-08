@@ -1,36 +1,20 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class Room : MonoBehaviour
+public class Room
 {
-    [SerializeField] private WallSegment prefabSegment;
+    private Vector3Int Index {get; set;}
+
     List<WallSegment> Walls {get; set;}
 
-    private void Awake()
+    public Room( int xIndex, int yIndex )
     {
+        Index = new Vector3Int( xIndex, yIndex, 0 );
         Walls = new List<WallSegment>();
-        CreateOuterTestWall();
     }
 
-    private void CreateOuterTestWall()
+    public void AddWall( WallSegment w )
     {
-        for(int i = 0; i < 15; i++ )
-        {
-            WallSegment newSegment = Instantiate(prefabSegment);
-            newSegment.Initialize( new Vector3Int(i-7, -4, 0) );
-            Walls.Add( newSegment );
-            newSegment = Instantiate(prefabSegment);
-            newSegment.Initialize( new Vector3Int(i-7, 4, 0) );
-            Walls.Add( newSegment );
-        }
-        for(int i = 0; i < 7; i++ )
-        {
-            WallSegment newSegment = Instantiate(prefabSegment);
-            newSegment.Initialize( new Vector3Int(-7, i-3, 0) );
-            Walls.Add( newSegment );
-            newSegment = Instantiate(prefabSegment);
-            newSegment.Initialize( new Vector3Int(7, i-3, 0) );
-            Walls.Add( newSegment );
-        }
+        Walls.Add( w );
     }
 }

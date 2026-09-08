@@ -7,7 +7,7 @@ public class Floor
     
     // Biome Biome {get;}
 
-    public List<Room> Rooms {get; private set;}
+    public List<Room> Rooms {get; private set;} = new List<Room>();
 
     public void AddRoom( Room r )
     {
