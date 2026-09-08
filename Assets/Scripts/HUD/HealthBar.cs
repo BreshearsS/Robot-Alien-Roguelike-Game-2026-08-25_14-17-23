@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
     public Slider healthBarValue;
-    public PlayerHealth playerHealth;
+    [SerializeField] public PlayerHealth playerHealth;
 
     void Start()
     {
@@ -12,10 +12,8 @@ public class HealthBar : MonoBehaviour
         healthBarValue.value = playerHealth.currentHealth;
     }
 
-    public void TakeDamage(int amount)
+    public void UpdateHealthBar(int currentHealth)
     {
-        //healthBarValue.value -= amount;
-        //healthBarValue.value = Mathf.Max(healthBarValue, 0); //Written by me but didn't work :(
-        healthBarValue.value = Mathf.Clamp(healthBarValue.value - amount, 0, healthBarValue.maxValue); //Written by AI
+        healthBarValue.value = currentHealth;
     }
 }

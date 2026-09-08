@@ -235,13 +235,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 55985782}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalRotation: {x: -0.0026179885, y: 0, z: 0, w: 0.9999966}
+  m_LocalPosition: {x: -0.3, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 677981310}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -0.3, y: 0, z: 0}
 --- !u!1 &181861570
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,7 +349,7 @@ GameObject:
   - component: {fileID: 187240784}
   - component: {fileID: 187240785}
   - component: {fileID: 187240786}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roomba
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -492,7 +492,7 @@ MonoBehaviour:
   explosionEffectPrefab: {fileID: 0}
   damageableLayers:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 65
   player: {fileID: 677981310}
   animator: {fileID: 187240786}
 --- !u!114 &187240785
@@ -1226,7 +1226,7 @@ GameObject:
   - component: {fileID: 677981312}
   - component: {fileID: 677981313}
   - component: {fileID: 677981314}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1268,7 +1268,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1299,7 +1299,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.0001, y: 0.0001}
+  m_Size: {x: 0.83, y: 0.81}
   m_EdgeRadius: 0
 --- !u!50 &677981308
 Rigidbody2D:
@@ -1327,7 +1327,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &677981309
 SpriteRenderer:
   serializedVersion: 3
@@ -1397,7 +1397,7 @@ Transform:
   m_GameObject: {fileID: 677981305}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.31, y: -6.21, z: 0}
+  m_LocalPosition: {x: -0.91, y: -1.85, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1432,6 +1432,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   currentHealth: 100
   maxHealth: 100
+  healthBar: {fileID: 388768720}
 --- !u!114 &677981313
 MonoBehaviour:
   m_ObjectHideFlags: 0

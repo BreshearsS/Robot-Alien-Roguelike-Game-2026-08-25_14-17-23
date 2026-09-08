@@ -1,6 +1,6 @@
 using UnityEngine;
 //Made using YouTube video guide
-public class ExplodingEnemy : MonoBehaviour
+public class RoombaExplode : MonoBehaviour
 {
     [Header("Explosion Settings")]
     public float destroyDelay = 0.5f;
@@ -16,8 +16,9 @@ public class ExplodingEnemy : MonoBehaviour
 
     private bool hasExploded = false;
 
-    void Start()
+    void Start() //Good
     {
+        //Debug.LogWarning("The script works");
         if (player == null)
         {
             GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
@@ -42,8 +43,9 @@ public class ExplodingEnemy : MonoBehaviour
             Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
         }
 
-        Collider[] hits = Physics.OverlapSphere(transform.position, damageRadius, damageableLayers);
-        foreach (Collider hit in hits)
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, damageRadius, damageableLayers);
+
+        foreach (Collider2D hit in hits)
         {
             if (hit.TryGetComponent<Damageable>(out var damageable))
             {
