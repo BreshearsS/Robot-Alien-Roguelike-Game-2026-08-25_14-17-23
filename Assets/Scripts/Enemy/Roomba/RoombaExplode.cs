@@ -16,9 +16,8 @@ public class RoombaExplode : MonoBehaviour
 
     private bool hasExploded = false;
 
-    void Start() //Good
+    void Start()
     {
-        //Debug.LogWarning("The script works");
         if (player == null)
         {
             GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
