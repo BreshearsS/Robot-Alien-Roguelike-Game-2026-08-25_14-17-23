@@ -1,14 +1,17 @@
+using UnityEditor.Callbacks;
 using UnityEngine;
-
+//using UnityEngine.InputSystem;
 public class Shooting : MonoBehaviour
 {
     public Transform shotPoint;
     public GameObject bullet;
     public float bulletForce;
+    private Vector2 shootDirection;
 
     // Update is called once per frame
     void Update()
     {
+
         if(Input.GetButtonDown("Fire1"))
         {
             Shoot();
@@ -20,7 +23,6 @@ public class Shooting : MonoBehaviour
         GameObject bulletInstance = Instantiate(bullet, shotPoint.position, shotPoint.rotation);
         Rigidbody2D rb = bulletInstance.GetComponent<Rigidbody2D>();
         rb.AddForce(shotPoint.up * bulletForce, ForceMode2D.Impulse);
-        // Debug.Log("Shoot called");
     }
 
 }
