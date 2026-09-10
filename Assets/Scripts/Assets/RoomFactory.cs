@@ -11,7 +11,7 @@ public class RoomFactory
     //Temporary
     public Room GenerateRoom( int x, int y, int depth )
     {
-        Room newRoom = new(x,y);
+        Room newRoom = new(x*16,y*9);
 
         //Test
         CreateOuterTestWall( newRoom );

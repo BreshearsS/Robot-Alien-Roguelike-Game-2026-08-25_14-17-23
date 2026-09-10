@@ -19,11 +19,12 @@ public class FloorFactory
         //User room factory here
 
         //test room
-        newFloor.AddRoom( RoomFactory.GenerateRoom(-32,0,depth) );
-        newFloor.AddRoom( RoomFactory.GenerateRoom(-16,0,depth) );
+        newFloor.AddRoom( RoomFactory.GenerateRoom(-2,0,depth) );
+        newFloor.AddRoom( RoomFactory.GenerateRoom(-1,0,depth) );
         newFloor.AddRoom( RoomFactory.GenerateRoom(0,0,depth) );
-        newFloor.AddRoom( RoomFactory.GenerateRoom(16,0,depth) );
-        newFloor.AddRoom( RoomFactory.GenerateRoom(32,0,depth) );
+        newFloor.AddRoom( RoomFactory.GenerateRoom(1,0,depth) );
+        newFloor.AddRoom( RoomFactory.GenerateRoom(2,0,depth) );
+        newFloor.AddRoom( RoomFactory.GenerateRoom(0,1,depth) );
         // newFloor.AddRoom( new Room(0,0) );
 
         return newFloor;
