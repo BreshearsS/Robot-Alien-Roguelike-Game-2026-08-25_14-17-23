@@ -11,7 +11,7 @@ public class ShootDirection : MonoBehaviour
         transform.position = player.position;
         if (kb != null)
         {
-            //transform.rotation = Quaternion.Euler(0, 0, 0); //Will reset the bullets to go up when stop moving
+            //shoots in 8 directions
             if (kb.wKey.isPressed || kb.upArrowKey.isPressed)
             {
                 transform.position = player.position + new Vector3(0f, 0.5f, 0f); //up
@@ -52,6 +52,10 @@ public class ShootDirection : MonoBehaviour
                 transform.position = player.position + new Vector3(0.5f, -0.3f, 0f); //down and right
                 transform.rotation = Quaternion.Euler(0,0,225);
             }
+
         }
+
+
+
     }
 }

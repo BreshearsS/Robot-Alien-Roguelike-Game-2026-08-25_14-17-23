@@ -67,5 +67,5 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "Robot-Alien-Roguelike-Game-2026-08-25_14-17-23.slnx"
+    "dotnet.defaultSolution": "Robot-Alien Roguelike Game.slnx"
 }
