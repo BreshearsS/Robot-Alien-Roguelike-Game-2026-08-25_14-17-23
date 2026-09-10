@@ -42,11 +42,11 @@ public class PlayerController : MonoBehaviour
             lastMoveDirection = moveInput;
         }
 
-        animator.SetFloat("MoveX", moveInput.x);
-        animator.SetFloat("MoveY", moveInput.y);
-        animator.SetFloat("Speed", moveInput.sqrMagnitude);
-        animator.SetFloat("LastMoveX", lastMoveDirection.x);
-        animator.SetFloat("LastMoveY", lastMoveDirection.y);
+        // animator.SetFloat("MoveX", moveInput.x);
+        // animator.SetFloat("MoveY", moveInput.y);
+        // animator.SetFloat("Speed", moveInput.sqrMagnitude);
+        // animator.SetFloat("LastMoveX", lastMoveDirection.x);
+        // animator.SetFloat("LastMoveY", lastMoveDirection.y);
     }
 
     void FixedUpdate()
