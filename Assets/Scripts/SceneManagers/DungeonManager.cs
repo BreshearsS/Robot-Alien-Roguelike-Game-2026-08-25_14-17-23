@@ -10,6 +10,8 @@ public class DungeonManager : MonoBehaviour
     public Room CurrentRoom { get; private set; }
     private int currentDepth;
 
+    [SerializeField] public PlayerController TestPlayer;
+
     //Vertical Size of game window
     private const float WindowHeight = 9f;
 
@@ -28,10 +30,31 @@ public class DungeonManager : MonoBehaviour
         currentDepth = 1;
         
         CurrentFloor = Context.FloorFactory.GenerateFloor( currentDepth );
+        CurrentRoom = CurrentFloor.Rooms[0];
+        SnapCameraTo(CurrentRoom);
     }
 
     public void CreateNewFloor()
     {
         //CurrentFloor = Context.FloorFactory.GenerateFloor( currentDepth );
+    }
+
+    private void SnapCameraTo( Room r )
+    {
+        Camera.main.transform.position = new Vector3( r.xPos(), r.yPos(), -10 );
+    }
+
+    private void Update()
+    {
+        if( !CurrentRoom.Contains(TestPlayer.transform.position) )
+            foreach( Room r in CurrentFloor.Rooms )
+                if( r.Contains(TestPlayer.transform.position) )
+                {
+                    CurrentRoom = r;
+                    SnapCameraTo( r );
+                    // Camera.main.transform.position = new Vector3( r.xPos(), r.yPos(), -10 );
+                    break;
+                }
+
     }
 }

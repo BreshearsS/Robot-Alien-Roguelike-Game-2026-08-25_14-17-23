@@ -9,16 +9,17 @@ public class RoomFactory
         gameData = data;
     }
     //Temporary
-    public Room GenerateRoom( int depth )
+    public Room GenerateRoom( int x, int y, int depth )
     {
-        Room newRoom = new Room(0,0);
-
-        Debug.Log($"Room (in factory): {newRoom}");
+        Room newRoom = new(x,y);
 
         //Test
         CreateOuterTestWall( newRoom );
 
-        Debug.Log($"Room (after walls): {newRoom}");
+        //Random wall to show rooms are different
+        WallSegment randomSegment = Object.Instantiate(gameData.wallPrefab);
+        randomSegment.Initialize( new Vector3( newRoom.xPos()+Random.Range(-2,2), newRoom.yPos()+Random.Range(-2,2) ) );
+        newRoom.AddWall(randomSegment);
 
         return newRoom;
     }
@@ -26,16 +27,16 @@ public class RoomFactory
     //Create wall around room
     private void CreateOuterTestWall( Room room )
     {
-        for(int i = 0; i < 16; i++ )
+        for(float i = 0; i <= 16; i+=0.5f )
         {
             WallSegment newSegment = Object.Instantiate(gameData.wallPrefab);
-            newSegment.Initialize( new Vector3(i-7.5f, -3, 0) );
+            newSegment.Initialize( new Vector3(room.xPos() + i-8f, room.yPos()-4.5f, 0) );
             room.AddWall( newSegment );
             newSegment = Object.Instantiate(gameData.wallPrefab);
-            newSegment.Initialize( new Vector3(i-7.5f, 5, 0) );
+            newSegment.Initialize( new Vector3(room.xPos() + i-8f, room.yPos()+4.5f, 0) );
             room.AddWall( newSegment );
         }
-        for(int i = 0; i < 7; i++ )
+        for(float i = 0; i <= 8; i+=0.5f )
         {
             WallSegment newSegment;
             if( i < 2 || i > 3 )
@@ -43,7 +44,7 @@ public class RoomFactory
             else
                 newSegment = Object.Instantiate(gameData.doorPrefab);
 
-            newSegment.Initialize( new Vector3(-7.5f, i-2, 0) );
+            newSegment.Initialize( new Vector3(room.xPos() -8f, room.yPos()+ i-4f, 0) );
             room.AddWall( newSegment );
 
             if( i < 2 || i > 3 )
@@ -51,7 +52,7 @@ public class RoomFactory
             else
                 newSegment = Object.Instantiate(gameData.doorPrefab);
 
-            newSegment.Initialize( new Vector3(7.5f, i-2, 0) );
+            newSegment.Initialize( new Vector3(room.xPos() + 8f, room.yPos()+ i-4f, 0) );
             room.AddWall( newSegment );
         }
     }
