@@ -9,9 +9,9 @@ public class RoomFactory
         gameData = data;
     }
     //Temporary
-    public Room GenerateRoom( int x, int y, int depth )
+    public Room GenerateRoom( Vector2Int pos, int depth )
     {
-        Room newRoom = new(x*16,y*9);
+        Room newRoom = new(pos.x*16,pos.y*9);
 
         //Test
         CreateOuterTestWall( newRoom );
