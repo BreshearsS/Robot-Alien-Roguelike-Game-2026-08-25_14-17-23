@@ -12,10 +12,10 @@ public class DoorMaker
     {
         switch( dir )
         {
-            case 2: if( EastDoor == Vector2.zero )  EastDoor  = new Vector2(  8, Random.Range(-14,13) ); break;
-            case 1: if( WestDoor == Vector2.zero )  WestDoor  = new Vector2( -8, Random.Range(-14,13) ); break;
-            case 4: if( NorthDoor == Vector2.zero ) NorthDoor = new Vector2( Random.Range(-7,5),  4.5f ); break;
-            case 3: if( SouthDoor == Vector2.zero ) SouthDoor = new Vector2( Random.Range(-7,5), -4.5f ); break;
+            case 2: if( EastDoor == Vector2.zero )  EastDoor  = new Vector2(  8, Random.Range(-3.5f,3.5f) ); break;
+            case 1: if( WestDoor == Vector2.zero )  WestDoor  = new Vector2( -8, Random.Range(-3.5f,3.5f) ); break;
+            case 4: if( NorthDoor == Vector2.zero ) NorthDoor = new Vector2( Random.Range(-7,7),  4.5f ); break;
+            case 3: if( SouthDoor == Vector2.zero ) SouthDoor = new Vector2( Random.Range(-7,7), -4.5f ); break;
         }
     }
     public void AddExit( int dir )
@@ -26,10 +26,10 @@ public class DoorMaker
             // case 2: if( WestDoor == null )  WestDoor  = new Vector2( Random.Range(-14,13),  4 ); break;
             // case 3: if( NorthDoor == null ) NorthDoor = new Vector2(  5.5f, Random.Range(-7,5) ); break;
             // case 4: if( SouthDoor == null ) SouthDoor = new Vector2( -5.5f, Random.Range(-7,5) ); break;
-            case 1: if( EastDoor == Vector2.zero )  EastDoor  = new Vector2(  8, Random.Range(-14,13) ); break;
-            case 2: if( WestDoor == Vector2.zero )  WestDoor  = new Vector2( -8, Random.Range(-14,13) ); break;
-            case 3: if( NorthDoor == Vector2.zero ) NorthDoor = new Vector2( Random.Range(-7,5),  4.5f ); break;
-            case 4: if( SouthDoor == Vector2.zero ) SouthDoor = new Vector2( Random.Range(-7,5), -4.5f ); break;
+            case 1: if( EastDoor == Vector2.zero )  EastDoor  = new Vector2(  8, Random.Range(-3.5f,3.5f) ); break;
+            case 2: if( WestDoor == Vector2.zero )  WestDoor  = new Vector2( -8, Random.Range(-3.5f,3.5f) ); break;
+            case 3: if( NorthDoor == Vector2.zero ) NorthDoor = new Vector2( Random.Range(-7,7),  4.5f ); break;
+            case 4: if( SouthDoor == Vector2.zero ) SouthDoor = new Vector2( Random.Range(-7,7), -4.5f ); break;
         }
     }
 
