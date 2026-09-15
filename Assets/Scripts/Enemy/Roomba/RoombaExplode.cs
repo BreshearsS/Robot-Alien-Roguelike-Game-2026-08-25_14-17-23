@@ -14,10 +14,15 @@ public class RoombaExplode : MonoBehaviour
     public Transform player;
     public Animator animator;
 
+    [Header("Enemy Stats")]
+    public int maxHealth = 100;
+    private int currentHealth = 69420;
+
     private bool hasExploded = false;
 
     void Start()
     {
+        currentHealth = maxHealth;
         if (player == null)
         {
             GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
@@ -25,6 +30,18 @@ public class RoombaExplode : MonoBehaviour
                 player = playerObj.transform;
             else
                 Debug.LogWarning("ExplodingEnemy: No player found. Assign one in the Inspector or tag your player 'Player'.");
+        }
+    }
+
+    public void TakeDamage(int amount)
+    {
+        if (hasExploded) return;
+
+        currentHealth -= amount;
+
+        if (currentHealth <= 0)
+        {
+            Explode();
         }
     }
 

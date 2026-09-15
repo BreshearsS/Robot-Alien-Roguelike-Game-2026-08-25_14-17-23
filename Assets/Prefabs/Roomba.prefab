@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2163180215359405458}
   - component: {fileID: 7103668264868555881}
   - component: {fileID: 6791783440675635129}
+  - component: {fileID: 8939034400095091118}
   m_Layer: 7
   m_Name: Roomba
   m_TagString: Untagged
@@ -136,7 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8805ebd66f405f4d8d73022dfed0eee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  moveSpeed: 3
+  moveSpeed: 6
   pauseDuration: 1
   dashDuration: 2
 --- !u!114 &2163180215359405458
@@ -152,8 +153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ExplodingEnemy
   destroyDelay: 0.5
-  explodeRadius: 1.5
-  damageRadius: 3
+  explodeRadius: 1
+  damageRadius: 1
   damage: 25
   explosionEffectPrefab: {fileID: 0}
   damageableLayers:
@@ -161,6 +162,7 @@ MonoBehaviour:
     m_Bits: 65
   player: {fileID: 0}
   animator: {fileID: 6791783440675635129}
+  maxHealth: 20
 --- !u!114 &7103668264868555881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,3 +200,39 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!58 &8939034400095091118
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8687578417571512713}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.001475483, y: 0.004426301}
+  m_Radius: 0.4111068
