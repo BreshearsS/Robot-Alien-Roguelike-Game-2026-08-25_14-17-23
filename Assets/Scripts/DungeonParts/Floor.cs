@@ -13,4 +13,9 @@ public class Floor
     {
         Rooms.Add( r );
     }
+
+    // public void AddEnemy( Enemy e )
+    // {
+    //     Enemies.Add( e );
+    // }
 }

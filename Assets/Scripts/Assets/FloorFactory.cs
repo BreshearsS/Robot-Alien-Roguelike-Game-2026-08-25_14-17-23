@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+// using System.Numerics;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -34,25 +36,25 @@ public class FloorFactory
     {
         Floor newFloor = new Floor();
 
-        List<Vector2Int> Path = DrawPaths(1);
+        Dictionary<Vector2Int,DoorMaker> Path = DrawPaths(depth);
 
-        foreach( Vector2Int step in Path )
-            newFloor.AddRoom( RoomFactory.GenerateRoom( step, depth) );
+        // foreach( Vector2Int step in Path )
+        // {   
+        //     newFloor.AddRoom( RoomFactory.GenerateRoom( step, depth ) );
+        // }
 
-        //User room factory here
-        // //test room
-        // newFloor.AddRoom( RoomFactory.GenerateRoom(-2,0,depth) );
-        // newFloor.AddRoom( RoomFactory.GenerateRoom(-1,0,depth) );
-        // newFloor.AddRoom( RoomFactory.GenerateRoom(0,0,depth) );
-        // newFloor.AddRoom( RoomFactory.GenerateRoom(1,0,depth) );
-        // newFloor.AddRoom( RoomFactory.GenerateRoom(2,0,depth) );
-        // newFloor.AddRoom( RoomFactory.GenerateRoom(0,1,depth) );
-        // newFloor.AddRoom( new Room(0,0) );
+        foreach (KeyValuePair<Vector2Int,DoorMaker> newRoom in Path)
+        {
+            newFloor.AddRoom( RoomFactory.GenerateRoom( newRoom.Key, newRoom.Value, depth ) );
+        }
+
+        //Calculate enemy tokens based on room count
+        //Loop through rooms and create enemies, then add them to Floor
 
         return newFloor;
     }
     
-    private List<Vector2Int> DrawPaths( int depth )
+    private Dictionary<Vector2Int,DoorMaker> DrawPaths( int depth )
     {
         //Steps away from elevator before reaching boss room
         int goal = depth+4;
@@ -61,16 +63,20 @@ public class FloorFactory
         Vector2Int CurrentStep = new(0,-1);
 
         //Path to be returned
-        List<Vector2Int> path = new() { CurrentStep };
+        Dictionary<Vector2Int,DoorMaker> path = new();// { CurrentStep, new DoorMaker() };
+        path[CurrentStep] = new DoorMaker();
+        path[CurrentStep].AddEntrance(4);
 
         //Keep stepping until reaching goal or going on too long
         while( ( Mathf.Abs(CurrentStep.x) + Mathf.Abs(CurrentStep.y) < goal) )
         {
             Vector2Int PossibleStep;
 
+            int dir;
+
             do
             {
-                int dir = Random.Range(1,4);
+                dir = Random.Range(1,4);
                 if( dir == 1 )      PossibleStep = new Vector2Int( CurrentStep.x+1, CurrentStep.y );
                 else if( dir == 2 ) PossibleStep = new Vector2Int( CurrentStep.x-1, CurrentStep.y );
                 else if( dir == 3 ) PossibleStep = new Vector2Int( CurrentStep.x, CurrentStep.y+1 );
@@ -78,20 +84,30 @@ public class FloorFactory
             }
             while( ( PossibleStep.x == 0 && PossibleStep.y == 0 ) ); //Can't go to elevator
 
-            //Add new random step
+            //Add exit to previous room
+            path[CurrentStep].AddExit(dir);
+            //Update step
             CurrentStep = PossibleStep;
-            path.Add(CurrentStep);
+            //Check if step exists in the existing list
+            if( !path.ContainsKey(CurrentStep) )
+                path[CurrentStep] = new DoorMaker();
+            //Attempt to add the door (fails if that wall already has a door)
+            path[CurrentStep].AddEntrance(dir);
+            
+            // path.Add(CurrentStep);
+
 
             //Went on too long - reset
             if( path.Count > goal*20 )
             {
                 CurrentStep = new(0,-1);
-                path = new() {CurrentStep };
+                path[CurrentStep] = new DoorMaker();
+                path[CurrentStep].AddEntrance(4);
             }
         }
 
-        //Remove duplicates (I think this works, edited code from reddit and it APPEARS to work...)
-        path = new( path.DistinctBy(item => new {item.x, item.y, }) );
+        //Remove duplicates (I think this works, edited code from reddit and it APPEARS to work...) //No longer need, I think
+        // path = new( path.DistinctBy(item => new {item.x, item.y, }) );
         return path;
     }
 }

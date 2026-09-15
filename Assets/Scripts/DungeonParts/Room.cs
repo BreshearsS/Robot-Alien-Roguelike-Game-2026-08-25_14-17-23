@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 public class Room
 {
@@ -15,9 +16,15 @@ public class Room
         Boundary = new Rect( Position.x-8, Position.y-3.5f, 16, 9 );
     }
 
-    public void AddWall( WallSegment w )
+    public bool AddWall( WallSegment w )
     {
+        //Do not add if a wall segment already exists there
+        foreach( WallSegment wall in Walls )
+            if( wall.transform.position == w.transform.position )
+                return false;
+
         Walls.Add( w );
+        return true;
     }
 
     public int xPos()

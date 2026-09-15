@@ -22,12 +22,7 @@ public class DungeonManager : MonoBehaviour
         Camera camera = Camera.main;       // Get a reference
         camera.orthographicSize = 4.5f;    // Modify the referenced Camera
 
-        // CurrentFloor = new Floor();
-
-        // CurrentRoom.setRoom( new Room(0,0) ); <- HOW???
-        // AddComponent( new Room(0,0) );
-
-        currentDepth = 1;
+        currentDepth = 10;
         
         CurrentFloor = Context.FloorFactory.GenerateFloor( currentDepth );
         CurrentRoom = CurrentFloor.Rooms[0];
