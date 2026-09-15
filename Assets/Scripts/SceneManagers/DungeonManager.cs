@@ -10,7 +10,7 @@ public class DungeonManager : MonoBehaviour
     public Room CurrentRoom { get; private set; }
     private int currentDepth;
 
-    [SerializeField] public PlayerController TestPlayer;
+    [SerializeField] public PlayerController Player;
 
     //Vertical Size of game window
     private const float WindowHeight = 9f;
@@ -41,9 +41,9 @@ public class DungeonManager : MonoBehaviour
 
     private void Update()
     {
-        if( !CurrentRoom.Contains(TestPlayer.transform.position) )
+        if( !CurrentRoom.Contains(Player.transform.position) )
             foreach( Room r in CurrentFloor.Rooms )
-                if( r.Contains(TestPlayer.transform.position) )
+                if( r.Contains(Player.transform.position) )
                 {
                     CurrentRoom = r;
                     SnapCameraTo( r );
