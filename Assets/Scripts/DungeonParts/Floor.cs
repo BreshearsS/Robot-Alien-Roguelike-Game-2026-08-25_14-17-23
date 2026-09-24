@@ -1,9 +1,14 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Data.Common;
+using UnityEngine.UIElements;
 
 public class Floor
 {
-    // List<Enemy> Enemies {get;}
+
+    private readonly System.Random rng = new System.Random();
+
+    public List<Enemy> Enemies {get; private set;} = new List<Enemy>();
     
     // Biome Biome {get;}
 
@@ -13,9 +18,11 @@ public class Floor
     {
         Rooms.Add( r );
     }
+    public void AddEnemy( Vector2 pos, GameData data )
+    {
+        Enemy e = Object.Instantiate(data.roombaPrefab);
+        e.Initialize( new Vector2(pos.x*16, pos.y*9));
+        Enemies.Add(e);
+    }
 
-    // public void AddEnemy( Enemy e )
-    // {
-    //     Enemies.Add( e );
-    // }
 }

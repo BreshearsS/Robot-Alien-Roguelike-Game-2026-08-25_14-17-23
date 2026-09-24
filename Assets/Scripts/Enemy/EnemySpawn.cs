@@ -1,7 +1,7 @@
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class RoombaSpawn : MonoBehaviour
+public class EnemySpawn : MonoBehaviour
 {
     [SerializeField] private Transform player;
     [SerializeField] private GameObject roombaPrefab;

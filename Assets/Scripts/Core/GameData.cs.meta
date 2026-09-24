@@ -1,2 +1,14 @@
 fileFormatVersion: 2
 guid: 8c84aa77ffeca7048b485cb57e5d86c4
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - wallPrefab: {fileID: 5085755029961523987, guid: 96c480a39f7338649af1d444c833f306, type: 3}
+  - doorPrefab: {fileID: 5085755029961523987, guid: 1fd8a45deae5a5848a8cd2b16a3c901e, type: 3}
+  - roombaPrefab: {fileID: 2232558812843461130, guid: 0e15b3635f967af479f04f347d504476, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
