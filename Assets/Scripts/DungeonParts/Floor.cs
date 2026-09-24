@@ -21,7 +21,7 @@ public class Floor
     public void AddEnemy( Vector2 pos, GameData data )
     {
         Enemy e = Object.Instantiate(data.roombaPrefab);
-        e.Initialize( new Vector2(pos.x*16, pos.y*9));
+        e.Initialize( new Vector2(pos.x*16, pos.y*9),10);
         Enemies.Add(e);
     }
 
