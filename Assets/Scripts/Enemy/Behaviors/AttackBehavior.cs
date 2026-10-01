@@ -1,5 +1,5 @@
 using UnityEngine;
-
+/*
 public class AttackBehavior
 {
     int Delay;
@@ -31,3 +31,4 @@ public class AttackBehavior
         }
     }
 }
+*/

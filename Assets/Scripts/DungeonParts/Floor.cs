@@ -18,11 +18,10 @@ public class Floor
     {
         Rooms.Add( r );
     }
-    public void AddEnemy( Vector2 pos, GameData data )
+    public void AddEnemy(Vector2 pos, GameData data)
     {
-        Enemy e = Object.Instantiate(data.roombaPrefab);
-        e.Initialize( new Vector2(pos.x*16, pos.y*9),10);
+        Enemy e = Object.Instantiate(data.TestEnemy);
+        e.Initialize(new Vector2(pos.x * 16, pos.y * 9), 10 /* Aggro Range */, 3 /* Cloesest Range */);
         Enemies.Add(e);
     }
-
 }

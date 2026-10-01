@@ -348,7 +348,7 @@ GameObject:
   - component: {fileID: 1606436325}
   - component: {fileID: 1606436331}
   m_Layer: 0
-  m_Name: TestPlayer
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -589,7 +589,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e1473bbd892d8b439696cc3d004277a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DungeonManager
-  TestPlayer: {fileID: 1606436325}
+  Player: {fileID: 1606436325}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

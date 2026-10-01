@@ -1,35 +1,15 @@
-using System;
-using System.Numerics;
-using UnityEditor.Rendering;
-using Random = UnityEngine.Random;
-
-public class EnemyMovement
+using UnityEngine;
+public static class EnemyMovement
 {
-    Boolean enemyAggroed = false;
-    Player target;
-    Enemy enemy;
-    public void Initialize(Player target, Enemy enemy)
+    public static Vector2 GetMoveDirection(Vector2 enemyPos, Vector2 playerPos, float aggroRange, float closestRange)
     {
-        if(targetPos < enemy.AggroRange)
-        {
-            Idle();
-        }
-        else if(targetPos >= enemy.AggroRange)
-        {
-            enemyAggroed = true;
-            MoveTowardsPlayer();
-        }
-    }
+        Vector2 toPlayer = playerPos - enemyPos;
+        float sqrDist = toPlayer.sqrMagnitude;
 
-    void Idle()
-    {
-        //Picks random position and moves to it
-        float direction = Random.Range(1,5);
-    }
+        // Out of range, or when the enemy reaches their "I don't want to go any closer" range
+        if (sqrDist > aggroRange * aggroRange || sqrDist < closestRange)
+            return Vector2.zero;
 
-    void MoveTowardsPlayer()
-    {
-        //moves towards palyer.
+        return toPlayer.normalized;
     }
-
 }

@@ -5,5 +5,5 @@ public class GameData : ScriptableObject
 {
     public WallSegment wallPrefab;
     public WallSegment doorPrefab;
-    public Enemy roombaPrefab;
+    public Enemy TestEnemy;
 }
