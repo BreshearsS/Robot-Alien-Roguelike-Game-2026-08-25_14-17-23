@@ -1,7 +1,7 @@
 using UnityEngine;
-public static class EnemyMovement
+public class EnemyMovement
 {
-    public static Vector2 GetMoveDirection(Vector2 enemyPos, Vector2 playerPos, float aggroRange, float closestRange)
+    public Vector2 GetMoveDirection(Vector2 enemyPos, Vector2 playerPos, float aggroRange, float closestRange)
     {
         Vector2 toPlayer = playerPos - enemyPos;
         float sqrDist = toPlayer.sqrMagnitude;

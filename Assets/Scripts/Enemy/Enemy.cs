@@ -10,12 +10,14 @@ public class Enemy : MonoBehaviour
     public float ClosestRange {get; set;}
 
     private Transform player;
+    private EnemyMovement enemyMovement;
 
     public void Initialize(Vector3 pos, float aggroRange, float closestRange)
     {
         transform.position = pos;
         AggroRange = aggroRange;
         ClosestRange = closestRange;
+        enemyMovement = new();
 
         GameObject p = GameObject.FindWithTag("Player");
         if (p != null) player = p.transform;
@@ -29,7 +31,7 @@ public class Enemy : MonoBehaviour
             Debug.Log("player == null");
         }
 
-        Vector2 dir = EnemyMovement.GetMoveDirection(transform.position, player.position, AggroRange, ClosestRange);
+        Vector2 dir = enemyMovement.GetMoveDirection(transform.position, player.position, AggroRange, ClosestRange);
         transform.position += (Vector3)(dir * moveSpeed * Time.deltaTime);
     }
 }
