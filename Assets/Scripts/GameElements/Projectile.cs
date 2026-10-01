@@ -7,7 +7,7 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField] public int Cooldown;
     [SerializeField] private float Lifespan;
-    [SerializeField] private int Speed;
+    [SerializeField] private float Speed;
 
     private float EndTime { get; set; }
     private Vector3 Movement { get; set; }
@@ -18,7 +18,8 @@ public class Projectile : MonoBehaviour
     {
         EndTime = Time.time + Lifespan;
         //Figured with help from ChatGPT
-        Movement = (GameObject.Find("Player").transform.position - this.transform.position).normalized * Speed;
+        GameObject target = GameObject.FindGameObjectWithTag("Player");
+        Movement = (target.transform.position - transform.position).normalized * Speed;
     }
 
     // Update is called once per frame
@@ -28,5 +29,19 @@ public class Projectile : MonoBehaviour
 
         if (Time.time >= EndTime)
             Destroy(gameObject);
+
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Destroy(gameObject);
+        }
+        else if (other.CompareTag("Wall"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

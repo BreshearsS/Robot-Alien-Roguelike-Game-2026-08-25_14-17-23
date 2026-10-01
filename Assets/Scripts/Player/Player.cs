@@ -12,4 +12,19 @@ public class Player : MonoBehaviour
     {
         
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("Touched something");
+        if (other.CompareTag("Projectile"))
+        {
+            Projectile shot = other.GetComponent<Projectile>();
+            GetHitBy(shot);
+        }
+    }
+
+    void GetHitBy( Projectile p )
+    {
+        Debug.Log("Hit by: " + p);
+    }
 }

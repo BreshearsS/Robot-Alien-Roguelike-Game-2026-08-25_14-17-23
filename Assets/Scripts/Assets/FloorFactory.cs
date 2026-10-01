@@ -43,6 +43,9 @@ public class FloorFactory
         //     newFloor.AddRoom( RoomFactory.GenerateRoom( step, depth ) );
         // }
 
+        //Elevator
+        newFloor.AddRoom( new Room(0,0) );
+
         foreach (KeyValuePair<Vector2Int,DoorMaker> newRoom in Path)
         {
             newFloor.AddRoom( RoomFactory.GenerateRoom( newRoom.Key, newRoom.Value, depth ) );
