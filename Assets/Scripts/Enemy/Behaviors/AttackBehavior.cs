@@ -9,13 +9,13 @@ public class AttackBehavior
     Enemy Source;
     Player Target;
 
-    public void Initialize( Enemy e, Player p, Projectile Attack )
+    public void Initialize(Enemy s, Player t, Projectile Attack )
     {
         this.Attack = Attack;
         Delay = Attack.Cooldown;
 
-        Source = e;
-        Target = p;
+        Source = s;
+        Target = t;
     }
 
     public void AttackTarget()
@@ -25,8 +25,8 @@ public class AttackBehavior
             Delay--;
             if( Delay < 0 )
             {
-                Delay = Source.Cooldown;
-                //create projectile
+                Delay = Attack.Cooldown;
+                Object.Instantiate(Attack, Source.transform.position, Quaternion.identity);
             }
         }
     }
