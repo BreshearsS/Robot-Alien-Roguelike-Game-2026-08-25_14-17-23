@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float acceleration = 15f;
     [SerializeField] private float slowRadius = 3f;
     public float AggroRange { get; set; }
-    public float ClosestRange {get; set;}
+    public float PrefRange {get; set;}
 
     private Transform player;
     private EnemyMovement enemyMovement;
@@ -22,11 +22,11 @@ public class Enemy : MonoBehaviour
         rb.linearDamping = 1f;
         rb.gravityScale = 0f;
     }
-    public void Initialize(Vector3 pos, float aggroRange, float closestRange)
+    public void Initialize(Vector3 pos, float aggroRange, float prefRange)
     {
         transform.position = pos;
         AggroRange = aggroRange;
-        ClosestRange = closestRange;
+        PrefRange = prefRange;
         enemyMovement = new();
         GameObject p = GameObject.FindWithTag("Player");
         if (p != null) player = p.transform;
@@ -39,7 +39,7 @@ public class Enemy : MonoBehaviour
         if (player == null || enemyMovement == null) return;
 
                
-        Vector2? target = enemyMovement.GetMoveDirection(rb.position, player.position, AggroRange, ClosestRange);
+        Vector2? target = enemyMovement.GetMoveDirection(rb.position, player.position, AggroRange, PrefRange);
 
         MoveTowardPlayer(target);
     }
