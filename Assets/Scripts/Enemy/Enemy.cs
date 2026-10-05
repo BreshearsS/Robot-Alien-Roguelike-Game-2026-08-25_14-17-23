@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] public Projectile projectile;
+    [SerializeField] private Projectile projectile;
     [SerializeField] private float moveSpeed = 2f;
     [SerializeField] private float acceleration = 15f;
     [SerializeField] private float slowRadius = 3f;
@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
 
     private Transform player;
     private EnemyMovement enemyMovement;
+    private AttackBehavior attackBehavior;
     private Rigidbody2D rb;
 
     //faction
@@ -36,6 +37,10 @@ public class Enemy : MonoBehaviour
         GameObject p = GameObject.FindWithTag("Player");
         if (p != null) player = p.transform;
         else Debug.LogWarning("Enemy could not find 'Player'");
+
+        attackBehavior = new();
+        attackBehavior.Initialize(this, p, projectile);
+        Debug.Log("Initialized AttackBehavior");
     }
 
     //FixedUpdate() and MoveTowardPlayer() were made using the help of Claude (AI).
@@ -47,6 +52,8 @@ public class Enemy : MonoBehaviour
         Vector2? target = enemyMovement.GetMoveDirection(rb.position, player.position, AggroRange, PrefRange);
 
         MoveTowardPlayer(target);
+
+        attackBehavior.AttackTarget();
     }
 
     private void MoveTowardPlayer(Vector2? target)

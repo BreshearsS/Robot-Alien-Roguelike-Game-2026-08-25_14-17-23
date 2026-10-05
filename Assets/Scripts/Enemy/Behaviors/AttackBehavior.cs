@@ -1,5 +1,5 @@
 using UnityEngine;
-/*
+
 public class AttackBehavior
 {
     int Delay;
@@ -7,16 +7,25 @@ public class AttackBehavior
     Projectile Attack;
 
     Enemy Source;
-    Player Target;
+    GameObject Target;
 
-    public void Initialize(Enemy s, Player t, Projectile Attack )
+    public void Initialize(Enemy s, GameObject t, Projectile Attack)
     {
-        this.Attack = Attack;
-        Delay = Attack.Cooldown;
-
         Source = s;
         Target = t;
+
+        this.Attack = Attack;
+        Delay = Attack.Cooldown;
     }
+
+    //public void Initialize(Enemy s, Player t, Projectile Attack )
+    //{
+    //    this.Attack = Attack;
+    //    Delay = Attack.Cooldown;
+
+    //    Source = s;
+    //    Target = t;
+    //}
 
     public void AttackTarget()
     {
@@ -26,9 +35,9 @@ public class AttackBehavior
             if( Delay < 0 )
             {
                 Delay = Attack.Cooldown;
-                Object.Instantiate(Attack, Source.transform.position, Quaternion.identity);
+
+                Projectile newProjectile = Object.Instantiate(Attack, Source.transform.position, Quaternion.identity);
             }
         }
     }
 }
-*/

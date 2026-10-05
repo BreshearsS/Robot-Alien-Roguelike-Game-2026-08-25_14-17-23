@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d12b3f71495226a4daf9f68ee64d869b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  projectile: {fileID: 0}
+  projectile: {fileID: 6219556136686360523, guid: f87cd7ae04565824b98a2835d5a873cb, type: 3}
   moveSpeed: 5
   acceleration: 15
   slowRadius: 3

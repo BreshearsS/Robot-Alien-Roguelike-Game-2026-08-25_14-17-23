@@ -25,12 +25,10 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += Movement;
+        transform.position += Movement * Time.deltaTime;
 
         if (Time.time >= EndTime)
             Destroy(gameObject);
-
-
     }
 
     private void OnTriggerEnter2D(Collider2D other)
