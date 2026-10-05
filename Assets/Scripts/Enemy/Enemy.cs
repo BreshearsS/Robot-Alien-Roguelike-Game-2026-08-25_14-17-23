@@ -15,6 +15,11 @@ public class Enemy : MonoBehaviour
     private EnemyMovement enemyMovement;
     private Rigidbody2D rb;
 
+    //faction
+    //is_active
+
+    //aquireTarget()
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
