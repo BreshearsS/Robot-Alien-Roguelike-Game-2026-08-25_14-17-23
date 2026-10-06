@@ -7,11 +7,13 @@ using UnityEngine;
 public class FloorFactory
 {
     private RoomFactory RoomFactory;
+    private EnemyFactory EnemyFactory;
     private GameData GameData;
 
-    public FloorFactory( GameData data, RoomFactory factory )
+    public FloorFactory( GameData data, RoomFactory factory, EnemyFactory enemyFactory )
     {
         RoomFactory = factory;
+        EnemyFactory = enemyFactory;
         GameData = data;
     }
 

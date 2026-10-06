@@ -8,6 +8,7 @@ public class GameContext
 {
     public RoomFactory RoomFactory {get;}
     public FloorFactory FloorFactory {get;}
+    public EnemyFactory EnemyFactory { get; }
 
     // Player player {get;};
 
@@ -16,6 +17,7 @@ public class GameContext
     {
         //instantiate factories
         RoomFactory = new RoomFactory( data );
-        FloorFactory = new FloorFactory( data, RoomFactory );
+        EnemyFactory = new EnemyFactory(data);
+        FloorFactory = new FloorFactory( data, RoomFactory, EnemyFactory );
     }
 }

@@ -8,6 +8,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float moveSpeed = 2f;
     [SerializeField] private float acceleration = 15f;
     [SerializeField] private float slowRadius = 3f;
+    [SerializeField] public Faction faction;
+    [SerializeField] public Biome biome;
     public float AggroRange { get; set; }
     public float PrefRange {get; set;}
 
@@ -16,7 +18,6 @@ public class Enemy : MonoBehaviour
     private AttackBehavior attackBehavior;
     private Rigidbody2D rb;
 
-    //faction
     //is_active
 
     //aquireTarget()
@@ -40,7 +41,6 @@ public class Enemy : MonoBehaviour
 
         attackBehavior = new();
         attackBehavior.Initialize(this, p, projectile);
-        Debug.Log("Initialized AttackBehavior");
     }
 
     //FixedUpdate() and MoveTowardPlayer() were made using the help of Claude (AI).
@@ -90,4 +90,9 @@ public class Enemy : MonoBehaviour
         Vector2 dir = enemyMovement.GetMoveDirection(transform.position, player.position, AggroRange, ClosestRange);
         transform.position += (Vector3)(dir * moveSpeed * Time.deltaTime);
     }*/
+}
+
+public enum Faction
+{
+    ROBOT, ALIEN
 }
