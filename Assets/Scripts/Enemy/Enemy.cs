@@ -1,15 +1,17 @@
 using System;
 using Unity.VisualScripting;
+using UnityEditor.SearchService;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private Projectile projectile;
+    [SerializeField] public Faction faction;
+    [SerializeField] public Biome biome;
+    [SerializeField] public int DifficultyLevel;
     [SerializeField] private float moveSpeed = 2f;
     [SerializeField] private float acceleration = 15f;
     [SerializeField] private float slowRadius = 3f;
-    [SerializeField] public Faction faction;
-    [SerializeField] public Biome biome;
     public float AggroRange { get; set; }
     public float PrefRange {get; set;}
 
@@ -18,7 +20,11 @@ public class Enemy : MonoBehaviour
     private AttackBehavior attackBehavior;
     private Rigidbody2D rb;
 
-    //is_active
+    public bool is_active;
+
+    //Spawn Data
+    [SerializeField] public int TokenCost;
+    [SerializeField] public int GroupSize;
 
     //aquireTarget()
 

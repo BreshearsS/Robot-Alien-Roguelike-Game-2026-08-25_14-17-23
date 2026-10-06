@@ -18,6 +18,7 @@ public class Initializer : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
+        gameData.Initialize();
         Context = new GameContext(gameData);
     }
 }

@@ -15,13 +15,13 @@ just needs to receive biome
 
 //generateAliens() <-- Still need to do this
 
-public enum EnemyType
-{
-    Roomba = 1,
-    Turret = 2,
-    MissileRobot = 3
+//public enum EnemyType
+//{
+//    Roomba = 1,
+//    Turret = 2,
+//    MissileRobot = 3
 
-}
+//}
 
 
 public class EnemyFactory
@@ -37,16 +37,20 @@ public class EnemyFactory
         GameData = data;
     }
 
+    //GameData.RandomEnemy( Faction f, Biome b, int difficulty );
+
     // Gets the highest enemy type for each floor
-    EnemyType GetMaxEnemyType(int floor) // this will change later whenever we get biomes working
+    Enemy GetMaxEnemyType(int floor) // this will change later whenever we get biomes working
     {
         switch (floor)
         {
             case 1:
             case 2:
-                return EnemyType.Turret;  // roombas, turrets
+                return GameData.RandomEnemy(Faction.ROBOT, Biome.LAB, 1);
+                //return EnemyType.Turret;  // roombas, turrets
             default:
-                return EnemyType.MissileRobot; // floor 3+: roombas, turrets, missiles
+                return GameData.RandomEnemy(Faction.ROBOT, Biome.LAB, 1);
+                //return EnemyType.MissileRobot; // floor 3+: roombas, turrets, missiles
         }
     }
 

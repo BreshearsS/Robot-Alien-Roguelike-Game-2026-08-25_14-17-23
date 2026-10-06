@@ -20,7 +20,7 @@ public class GameData : ScriptableObject
         Aliens.Clear();
 
         //Add all robots
-        foreach (Enemy e in Resources.LoadAll<Enemy>("Robots"))
+        foreach (Enemy e in Resources.LoadAll<Enemy>("EnemyPrefabs/Robots"))
         {
             if (e.faction == Faction.ROBOT) //Make sure it's a robot
             {
@@ -34,7 +34,7 @@ public class GameData : ScriptableObject
         }
 
         //Add all aliens
-        foreach (Enemy e in Resources.LoadAll<Enemy>("Aliens"))
+        foreach (Enemy e in Resources.LoadAll<Enemy>("EnemyPrefabs/Aliens"))
         {
             if (e.faction == Faction.ALIEN) //Make sure it's an alien
             {
@@ -48,7 +48,8 @@ public class GameData : ScriptableObject
         }
     }
 
-    public Enemy RandomEnemy( Faction f, Biome b )
+    //TODO: Choose an enemy of appropriate danger level
+    public Enemy RandomEnemy( Faction f, Biome b, int danger )
     {
         switch (f)
         {
