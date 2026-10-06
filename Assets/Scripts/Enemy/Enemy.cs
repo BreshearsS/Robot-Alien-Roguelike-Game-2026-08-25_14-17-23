@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private Projectile projectile;
     [SerializeField] public Faction faction;
     [SerializeField] public Biome biome;
     [SerializeField] public int DifficultyLevel;
     [SerializeField] private float moveSpeed = 2f;
     [SerializeField] private float acceleration = 15f;
     [SerializeField] private float slowRadius = 3f;
+    [SerializeField] private Projectile projectile;
     public float AggroRange { get; set; }
     public float PrefRange {get; set;}
 

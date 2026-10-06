@@ -54,37 +54,38 @@ public class EnemyFactory
         }
     }
 
-    int GetCost(EnemyType type)
-    {
-        switch (type)
-        {
-            case EnemyType.Roomba:  return 1; // the only one that can spawn so then everything doesnt break 
-            case EnemyType.Turret:  return 69; // cost is 1 (69 is just for testing)
-            case EnemyType.MissileRobot: return 420; // cost is 2 (420 is just for testing)
-            default: return 0;
-        }
-    }
+    //int GetCost(EnemyType type)
+    //{
+    //    switch (type)
+    //    {
+    //        case EnemyType.Roomba:  return 1; // the only one that can spawn so then everything doesnt break 
+    //        case EnemyType.Turret:  return 69; // cost is 1 (69 is just for testing)
+    //        case EnemyType.MissileRobot: return 420; // cost is 2 (420 is just for testing)
+    //        default: return 0;
+    //    }
+    //}
 
-    GameObject GetPrefab(EnemyType type)
-    {
-        switch (type)
-        {
-            case EnemyType.Roomba:  return roombaPrefab;
-            case EnemyType.Turret:  return turretPrefab;
-            case EnemyType.MissileRobot: return missilePrefab;
-            default: return null;
-        }
-    }
+    //GameObject GetPrefab(EnemyType type)
+    //{
+    //    switch (type)
+    //    {
+    //        case EnemyType.Roomba:  return roombaPrefab;
+    //        case EnemyType.Turret:  return turretPrefab;
+    //        case EnemyType.MissileRobot: return missilePrefab;
+    //        default: return null;
+    //    }
+    //}
 
-    public List<GameObject> GetRobotList(Room room, int floor, int tokens)
+    public List<Enemy> GetRobotList(Room room, int floor, int tokens)
     {
-        List<GameObject> enemies = new List<GameObject>();
-        int maxType = (int)GetMaxEnemyType(floor);
+        List<Enemy> enemies = new List<Enemy>();
+        int maxType = floor / 2 + 1;// (int)GetMaxEnemyType(floor);
 
         while (tokens > 0)
         {
-            EnemyType randEnemy = (EnemyType)Random.Range(1, maxType + 1);
-            int cost = GetCost(randEnemy);
+            //EnemyType randEnemy = (EnemyType)Random.Range(1, maxType + 1);
+            Enemy randEnemy = GameData.RandomEnemy(Faction.ROBOT, Biome.LAB, 2);
+            int cost = randEnemy.TokenCost;//GetCost(randEnemy);
 
             if (cost > tokens)
             {
@@ -92,7 +93,8 @@ public class EnemyFactory
             }
             else
             {
-                enemies.Add(GetPrefab(randEnemy));
+                //enemies.Add(GetPrefab(randEnemy));
+                enemies.Add(randEnemy);
                 tokens -= cost; 
             }
         }

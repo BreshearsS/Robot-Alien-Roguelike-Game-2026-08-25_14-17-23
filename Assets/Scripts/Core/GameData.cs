@@ -51,22 +51,21 @@ public class GameData : ScriptableObject
     //TODO: Choose an enemy of appropriate danger level
     public Enemy RandomEnemy( Faction f, Biome b, int danger )
     {
-        switch (f)
+        Enemy ChosenEnemy;
+        //Choose appropriate list
+        Dictionary<Biome,List <Enemy>> EnemyDict = f == Faction.ROBOT ? Robots : Aliens;
+
+        //Limit search time
+        for (int i = 0; i < 100; i++)
         {
-            case Faction.ROBOT: return RandomRobot(b);
-            case Faction.ALIEN: return RandomAlien(b);
-            default: return null;
+            ChosenEnemy = EnemyDict[b][Random.Range(0, EnemyDict[b].Count)];
+            //Make sure enemy is not outside danger level
+            if (ChosenEnemy.DifficultyLevel <= danger)
+                return ChosenEnemy;
         }
-    }
 
-    private Enemy RandomRobot(Biome b)
-    {
-        return Robots[b][Random.Range(0, Robots[b].Count)];
-    }
-
-    private Enemy RandomAlien(Biome b)
-    {
-        return Aliens[b][Random.Range(0, Robots[b].Count)];
+        //Ideally, will never happen
+        return null;
     }
 }
 
