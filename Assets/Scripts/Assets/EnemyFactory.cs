@@ -20,12 +20,22 @@ public enum EnemyType
     Roomba = 1,
     Turret = 2,
     MissileRobot = 3
+
 }
+
+
 public class EnemyFactory
 {
+    private GameData GameData;
+
     public GameObject roombaPrefab;
     public GameObject turretPrefab; // doesn't exist yet
     public GameObject missilePrefab; // also doesn't exist yet
+    
+    public EnemyFactory(GameData data)
+    {
+        GameData = data;
+    }
 
     // Gets the highest enemy type for each floor
     EnemyType GetMaxEnemyType(int floor) // this will change later whenever we get biomes working
@@ -47,7 +57,7 @@ public class EnemyFactory
             case EnemyType.Roomba:  return 1; // the only one that can spawn so then everything doesnt break 
             case EnemyType.Turret:  return 69; // cost is 1 (69 is just for testing)
             case EnemyType.MissileRobot: return 420; // cost is 2 (420 is just for testing)
-            default:                return 0;
+            default: return 0;
         }
     }
 
@@ -58,7 +68,7 @@ public class EnemyFactory
             case EnemyType.Roomba:  return roombaPrefab;
             case EnemyType.Turret:  return turretPrefab;
             case EnemyType.MissileRobot: return missilePrefab;
-            default:                return null;
+            default: return null;
         }
     }
 
