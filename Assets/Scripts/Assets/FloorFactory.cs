@@ -51,8 +51,9 @@ public class FloorFactory
         foreach (KeyValuePair<Vector2Int,DoorMaker> newRoom in Path)
         {
             newFloor.AddRoom( RoomFactory.GenerateRoom( newRoom.Key, newRoom.Value, depth ) );
-            newFloor.AddEnemy( newRoom.Key, GameData);
+            //newFloor.AddEnemy( newRoom.Key, GameData);
         }
+        newFloor.Enemies += EnemyFactory.GetAllRobots(Floor Enemies; depth; Biome);
 
         //Calculate enemy tokens based on room count
         //Loop through rooms and create enemies, then add them to Floor

@@ -35,11 +35,9 @@ public class Enemy : MonoBehaviour
         rb.linearDamping = 1f;
         rb.gravityScale = 0f;
     }
-    public void Initialize(Vector3 pos, float aggroRange, float prefRange)
+    public void Initialize(Vector3 pos)
     {
         transform.position = pos;
-        AggroRange = aggroRange;
-        PrefRange = prefRange;
         enemyMovement = new();
         GameObject p = GameObject.FindWithTag("Player");
         if (p != null) player = p.transform;

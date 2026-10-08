@@ -6,6 +6,7 @@ public class Room
 {
     private Vector3Int Position {get; set;}
     public Rect Boundary {get; private set;}
+    public int tokens = 0;
 
     List<WallSegment> Walls {get; set;}
 
